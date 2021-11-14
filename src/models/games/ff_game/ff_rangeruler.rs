@@ -39,8 +39,7 @@ impl FfRangeRuler {
 
 #[cfg(test)]
 mod tests {
-    use crate::models::ff::{ff_passrange::FfPassRangeEnum, ff_rangeruler::FfRangeRuler};
-
+    use crate::models::games::ff_game::{ff_passrange::FfPassRangeEnum, ff_rangeruler::FfRangeRuler};
 
     #[test]
     fn reset_get_pass_range() {

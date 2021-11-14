@@ -1,6 +1,7 @@
 pub mod ff_ball;
 pub mod ff_block;
 pub mod ff_dugout;
+pub mod ff_game;
 pub mod ff_gamestage;
 pub mod ff_passrange;
 pub mod ff_player_status;

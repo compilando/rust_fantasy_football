@@ -13,8 +13,11 @@ pub struct Team {
 }
 
 impl Team {
-	pub fn new() -> Team {
-        Default::default()
+	pub fn new(team_name: String) -> Team {
+        Team {
+            team_name,
+            ..Default::default()
+        }
     }    
 
 	pub fn serialize(&self) {
@@ -29,7 +32,7 @@ mod tests {
 
     #[test]
     fn serialize_works() {
-        let team = Team::new();
+        let team = Team::new(String::from("Unnamed"));
 
         team.serialize();        
     }

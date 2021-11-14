@@ -2,5 +2,6 @@
 pub enum GameError {
     PhasesNotDefined,
     TeamsNotDefined,
+    GameNotStarted,
     GameAlreadyFinished,
 }
