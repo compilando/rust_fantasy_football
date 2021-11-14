@@ -1,0 +1,12 @@
+pub mod ff_ball;
+pub mod ff_block;
+pub mod ff_dugout;
+pub mod ff_gamestage;
+pub mod ff_passrange;
+pub mod ff_player_status;
+pub mod ff_race;
+pub mod ff_rangeruler;
+pub mod ff_skill;
+pub mod ff_state_standing;
+pub mod ff_turn;
+pub mod ff_weather;

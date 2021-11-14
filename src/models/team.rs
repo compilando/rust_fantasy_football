@@ -1,10 +1,9 @@
-use super::team_status::TeamStatus;
-use super::player::Player;
+use super::{piece::Piece, team_status::TeamStatus};
 use serde::{Deserialize, Serialize};
 
 #[derive(Default, Clone, Eq, PartialEq, Debug, Serialize, Deserialize)]
 pub struct Team {
-    players: Vec<Player>,
+    players: Vec<Piece>,
 	rerolls: i32,
 	fan_factor: i32,
 	assistant_coaches: i32,
@@ -30,7 +29,7 @@ mod tests {
 
     #[test]
     fn serialize_works() {
-        let mut team = Team::new();
+        let team = Team::new();
 
         team.serialize();        
     }
