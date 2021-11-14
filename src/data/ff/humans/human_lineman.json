@@ -1,0 +1,11 @@
+{
+    "race": "HUMANS",
+    "title": "Lineman",
+    "cost": 50000,
+    "ma": 6,
+    "st": 3,
+    "ag": 3,
+    "av": 8,
+    "number": 1,
+    "skills": []
+}
