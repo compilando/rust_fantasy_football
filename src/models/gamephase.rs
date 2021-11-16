@@ -1,10 +1,13 @@
 use serde::{Deserialize, Serialize};
 
+use super::player::Player;
+
 #[derive(Default, Clone, Eq, PartialEq, Debug, Serialize, Deserialize)]
 pub struct GamePhase {
     name: String,
     turns: i32,
-    done: bool
+    done: bool,
+    player: Option<Player>
 }
 
 impl GamePhase {
@@ -13,6 +16,7 @@ impl GamePhase {
             name,
             turns,
             done: false, 
+            player: None, 
         }
     }    
 }

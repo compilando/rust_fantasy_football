@@ -11,11 +11,12 @@ pub struct BaseGame {
 
 pub trait BaseGameLifeCycle {
     fn name (self: &'_ Self) -> Option<&'_ String>;
-    fn start(&mut self) -> Result<(), GameError>;
-    fn phase_count(&mut self) -> usize;
-    fn current_phase(&mut self) -> Result<usize, GameError>;
+    fn start_game(&mut self) -> Result<(), GameError>;
+    fn start_phase(&mut self) -> Result<usize, GameError>;
     fn end_phase(&mut self) -> Result<usize, GameError>;
-    fn end(&mut self) -> Result<(), GameError>;
+    fn phase_count(&mut self) -> usize;
+    fn current_phase(&mut self) -> Result<usize, GameError>;    
+    fn end_game(&mut self) -> Result<(), GameError>;
 }
 
 impl BaseGame {
@@ -52,7 +53,7 @@ impl BaseGameLifeCycle for BaseGame {
         Some(&self.name)
     }
 
-    fn start(&mut self) -> Result<(), GameError> {
+    fn start_game(&mut self) -> Result<(), GameError> {
         
         let phases_count = self.phase_count();
         if phases_count == 0 {
@@ -72,6 +73,10 @@ impl BaseGameLifeCycle for BaseGame {
 
     fn current_phase(&mut self) -> Result<usize, GameError> {
         Ok(self.current_phase)
+    }
+
+    fn start_phase(&mut self) -> Result<usize, GameError> {
+        Ok(self.current_phase) // TODO
     }
 
     fn end_phase(&mut self) -> Result<usize, GameError> {
@@ -96,7 +101,7 @@ impl BaseGameLifeCycle for BaseGame {
         }
     }
 
-    fn end(&mut self) -> Result<(), GameError> {
+    fn end_game(&mut self) -> Result<(), GameError> {
         Ok(())
     }
 

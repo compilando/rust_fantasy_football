@@ -33,8 +33,12 @@ impl BaseGameLifeCycle for FfGame {
         self.game.name()
     }
 
-    fn start(&mut self) -> Result<(), GameError> {
-        self.game.start()
+    fn start_game(&mut self) -> Result<(), GameError> {
+        self.game.start_game()
+    }
+
+    fn start_phase(&mut self) -> Result<usize, GameError> {
+        self.game.start_phase()
     }
 
     fn end_phase(&mut self) -> Result<usize, GameError> {
@@ -49,8 +53,8 @@ impl BaseGameLifeCycle for FfGame {
         Ok(self.game.current_phase)
     }
 
-    fn end(&mut self) -> Result<(), GameError> {
-        self.game.end()
+    fn end_game(&mut self) -> Result<(), GameError> {
+        self.game.end_game()
     }
    
 }
@@ -77,8 +81,8 @@ mod tests {
         game.set_teams(vec![team_a, team_b]);
 
         // Start the game
-        let start_res = game.start();
-        assert_eq!(start_res.is_err(), false);
+        let start_game_res = game.start_game();
+        assert_eq!(start_game_res.is_err(), false);
 
         //let expected = Ok(3);
         //assert_eq!(game.current_phase(), expected);
@@ -101,8 +105,8 @@ mod tests {
         game.set_teams(vec![team_a, team_b]);
 
         // Start the game
-        let start_res = game.start();
-        assert_eq!(start_res.is_err(), false);
+        let start_game_res = game.start_game();
+        assert_eq!(start_game_res.is_err(), false);
 
         // Play the game
         let mut actual: usize;
@@ -116,6 +120,9 @@ mod tests {
         // Try to end inexistent phase...
         let end_res = game.end_phase();
         assert_eq!(end_res.is_err(), true);
+
+        let end_game_res = game.end_game();
+        assert_eq!(end_game_res.is_err(), false);
     }
     
     #[test]
@@ -129,8 +136,8 @@ mod tests {
         game.set_phases(vec![part_1, part_intermedio, part_2]);
         assert_eq!(game.phase_count(), 3);
 
-        let start_res = game.start();
-        assert_eq!(start_res.is_err(), true);
+        let start_game_res = game.start_game();
+        assert_eq!(start_game_res.is_err(), false);
 
         let mut actual: usize;
         actual = game.end_phase().unwrap();
@@ -139,6 +146,9 @@ mod tests {
         assert_eq!(actual, 2);
         actual = game.end_phase().unwrap();
         assert_eq!(actual, 3);
+
+        let end_game_res = game.end_game();
+        assert_eq!(end_game_res.is_err(), false);
 
     }
 }
