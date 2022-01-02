@@ -1,4 +1,4 @@
-package com.foul.gameserver.games.ChessGame;
+package com.foul.gameserver.games.FfGame;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,16 +8,16 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public final class ChessBoard extends BaseBoard {
+public final class FfBoard extends BaseBoard {
 
-    Logger logger = LoggerFactory.getLogger(ChessBoard.class);
+    Logger logger = LoggerFactory.getLogger(FfBoard.class);
 
     int[][] board;
 
-    int BOARD_WIDTH = 8;
-    int BOARD_HEIGHT = 8;
+    int BOARD_WIDTH = 15;
+    int BOARD_HEIGHT = 26;
 
-    public ChessBoard() {
+    public FfBoard() {
         this.board = new int[BOARD_WIDTH][BOARD_HEIGHT];
     }
 

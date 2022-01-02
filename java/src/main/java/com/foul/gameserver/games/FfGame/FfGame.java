@@ -17,6 +17,9 @@ public final class FfGame extends BaseGame {
 
     FfGame() {
         super();
+
+        this.gameBoard = new FfBoard();
+
         this.name = "Fantasy Football";
 
         var part1 = new GamePhase("FF_GAME_FIRST_PART", "Primera parte", 8);

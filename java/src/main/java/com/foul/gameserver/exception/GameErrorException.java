@@ -16,7 +16,9 @@ public class GameErrorException extends Exception {
 
     public GameErrorException(GameError gameError) {
         super(gameError.toString());
+        logger.error(this.getMessage(), this);        
     }
 
 
 }
+

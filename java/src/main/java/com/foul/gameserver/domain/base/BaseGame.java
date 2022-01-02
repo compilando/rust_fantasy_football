@@ -50,7 +50,7 @@ public class BaseGame implements BaseGameLifeCycle, BaseGameInfo {
 
     @Override
     public GameResult startGame() throws GameErrorException {
-        logger.debug("BaseGame::startGame");
+        logger.debug("BaseGame::startGame::start");
 
         var phaseCount = this.phaseCount();
         if (phaseCount == 0) {
@@ -62,17 +62,21 @@ public class BaseGame implements BaseGameLifeCycle, BaseGameInfo {
         }
         this.currentPhaseNumber = 1;
         this.currentPhase = this.getNextPhase(null);
+
+        logger.debug("BaseGame::startGame::end");
         // TODO Phase real
         return new GameResult();
     }
 
     @Override
     public PhaseResult startPhase() throws GameErrorException {
+        logger.debug("BaseGame::startPhase::start");
         return new PhaseResult(); // TODO
     }
 
     @Override
     public PhaseResult endPhase() throws GameErrorException {
+        logger.debug("BaseGame::endPhase::start");
         if (this.currentPhase() == null) {
             throw new GameErrorException(GameError.GameNotStarted);
         }
@@ -90,6 +94,7 @@ public class BaseGame implements BaseGameLifeCycle, BaseGameInfo {
     }
 
     public BaseBoard getBoard() throws GameErrorException {
+        logger.debug("BaseGame::getBoard");
         if (this.gameBoard == null) {
             throw new GameErrorException("No board defined");
         }
@@ -98,30 +103,36 @@ public class BaseGame implements BaseGameLifeCycle, BaseGameInfo {
 
     @Override
     public GameResult endGame() throws GameErrorException {
+        logger.debug("BaseGame::endGame");
         return null;
     }
 
     @Override
     public int phaseCount() {
+        logger.debug("BaseGame::phaseCount " + this.phases.size());
         return this.phases.size();
     }
 
     @Override
     public GamePhase currentPhase() {
+        logger.debug("BaseGame::currentPhase " + this.currentPhase);
         return this.currentPhase;
     }
 
     @Override
     public int currentPhaseNumber() {
+        logger.debug("BaseGame::currentPhaseNumber " + this.currentPhaseNumber);
         return this.currentPhaseNumber;
     }
 
     @Override
     public Player currentPlayer() {
+        logger.debug("BaseGame::currentPlayer " + this.currentPlayer);
         return this.currentPlayer;
     }
 
     private GamePhase getNextPhase(GamePhase phase) {
+        logger.debug("BaseGame::getNextPhase");
         if (phase == null) {
             return this.phases.get(0);
         }
